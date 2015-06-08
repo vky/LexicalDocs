@@ -186,39 +186,54 @@ while
 Identifiers are composed of one or more letters, digits, `_`, `:` or `!`.
 The first character can not be a digit. Any other combination is allowed.
 
+
 Identifiers are case-sensitive.
+
 
 `:` should be used sparingly. `!` should be used *especially sparingly*.
 
+
 </div><div>
+
 
 ```grammar
 [A-Za-z_:!][A-Za-z0-9_:!]*
 ```
 
+
 </div></div>
+
 
 ## Variables
 
+
 <div class="side_by_side"><div>
+
 
 Variables always start with a `$` and are followed by one or more letters, digits, `_`, `:` or `!`.
 
+
 </div><div>
+
 
 ```grammar
 \$[A-Za-z_:!]+
 ```
 
+
 </div></div>
 
+
 ## Literals
+
 
 
 Statements
 ==========
 
+
 ## Simple statements
+
 
 ```grammar
 lvalue :=
@@ -232,9 +247,12 @@ lvalue_tuple := `(` ( lvalue `,` )+ [ lvalue ] `)`
 
 ### Assignment
 
+
 #### Augmented assignment operators
 
+
 ### Expression statement
+
 
 ### Import statement
 
@@ -245,7 +263,9 @@ lvalue_tuple := `(` ( lvalue `,` )+ [ lvalue ] `)`
 
 
 
+
 ## Control flow statements
+
 
 ```grammar
 if_statement :=
@@ -264,11 +284,15 @@ for_in_statement :=
 
 ### If statement
 
+
 ### While statement
+
 
 ### For-in statement
 
+
 ### Break statement
+
 
 ### Continue statement
 
@@ -278,7 +302,9 @@ for_in_statement :=
 
 
 
+
 ## Throwing flow
+
 
 ```grammar
 try_statement :=
@@ -290,16 +316,21 @@ try_statement :=
 throw_statement := `throw` expression
 ```
 
+
 ### Try statement
+
 
 ### Throw statement
 
 
 
 
+
 # Expressions
 
+
 ## Simple expressions
+
 
 ```grammar
 simple_expression := access_expression
@@ -335,15 +366,21 @@ literal :=
 
 ### Item access
 
+
 ### Dot access
+
 
 ### Calling
 
+
 #### Keyword arguments
+
 
 ### Variables
 
+
 ### Names
+
 
 ### Literals
 
@@ -351,6 +388,7 @@ literal :=
 
 
 ## Compound expressions
+
 
 ```grammar
 compound_expression := logic_expression
@@ -383,10 +421,13 @@ mul_expression :=
 	| mul_expression `%` simple_expression
 ```
 
+
 Note that the logical operators `and` and `or` are not expressed recursively.
 You can't combine these operators without making precedence explicit through parentheses.
 
+
 ### Addition
+
 
 The `+` operator is used for addition, string concatenation and taking the intersection of types:
 
@@ -398,14 +439,19 @@ The `+` operator is used for addition, string concatenation and taking the inter
 	<String> + <String> -> <String>
 	
 	<Type> + <Type> -> <Type>
+	
 
 ### Subtraction
 
+
 ### Multiplication
+
 
 ### Division
 
+
 ### Modulo
+
 
 ### Union
 
@@ -413,7 +459,9 @@ The `+` operator is used for addition, string concatenation and taking the inter
 
 
 
+
 ## Functions
+
 
 ```grammar
 function := `function` `(` [ argument_list ] `)` [ `->` type ] block
@@ -426,7 +474,9 @@ argument := [ type ] variable [ `=` expression ]
 
 
 
+
 ## Classes
+
 
 ```grammar
 class := `class` `{` [ class_items ] `}`
@@ -440,18 +490,25 @@ class_item := property | method
 
 
 
+
 Core semantics
 ==============
 
+
 ## Scoping
+
 
 ## Type system
 
+
 ## Intrinsics
+
 
 ## Object-oriented programming
 
+
 ## Modules and importing
+
 
 
 
@@ -462,9 +519,12 @@ Core semantics
 Execution model
 ===============
 
+
 ## Fibers
 
+
 ## Memory management
+
 
 
 
@@ -475,10 +535,13 @@ Execution model
 Extending/embedding
 ===================
 
+
 ## Embedding PrtScrn in your application
+
 
 Rust's ownership and lifetime semantics make extending and embedding PrtScrn very easy. Refcounting and
 garbage-collecting happens automatically. The VM is inherently unsafe, but this is easily dealt with:
+
 
 * No `Gc` or `Rc` pointers should outlive the virtual machine that created them.
 Any `Gc` pointers still alive will segfault when used.
@@ -486,6 +549,7 @@ Any `Gc` pointers still alive will segfault when used.
 * No `Gc` or `Rc` pointers should be stored outside the VM.
 Doing so is likely to wrongly get their contents garbage-collected.
 Consider them valid only until the next garbage collection.
+
 
 <div class="note">
 Externally storable variants of these pointers are planned.
