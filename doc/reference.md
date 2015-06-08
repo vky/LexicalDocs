@@ -68,8 +68,6 @@ This is basically nothing more than language-enforced dependency injection.
 Lexical structure
 =================
 
-THIS BASICALLY COMPLETELY GLITCHES. #BlameGitHub
-
 ## Comments
 
 PrtScrn supports block and line comments.
@@ -182,6 +180,11 @@ while
 ```
 
 ## Identifiers
+
+THIS BASICALLY COMPLETELY GLITCHES. #BlameGitHub
+
+
+
 
 <div class="side_by_side"><div>
 
